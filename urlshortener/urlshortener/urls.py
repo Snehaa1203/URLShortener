@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from short.views import home,login,register,logout
+from short.views import login,register,logout
+from urlhandler.views import dashboard,generate,home,deleteurl
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,6 +25,11 @@ urlpatterns = [
     path('login/',login,name="login"),
     path('register/',register,name="register"),
     path('logout/', logout, name="logout"),
+    path('generate/',generate,name="generate"),
+    path('dashboard/',dashboard,name="dashboard"),
+    path('<str:query>/',home),
+    path('deleteurl/', deleteurl, name="deleteurl"),
+
     
 
 ]

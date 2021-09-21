@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 
-# Create your views here.
+
+# Create your views he
 def home(request):
     return render (request,'home.html')
 
@@ -18,7 +19,7 @@ def login(request):
                     if request.POST['next'] != '':
                         return redirect(request.POST.get('next'))
                     else:
-                        return redirect('home')
+                        return redirect(home)
                     
                 except User.DoesNotExist:
                     return render(request, 'login.html', {'error': "User Doesn't Exist"})
@@ -27,7 +28,7 @@ def login(request):
           else:
             return render(request, 'login.html')
     else:
-        return redirect('home')
+        return redirect(home)
 
 def register(request):
     if request.method == "POST":
