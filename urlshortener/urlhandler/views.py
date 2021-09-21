@@ -80,11 +80,11 @@ def home(request, query=None):
 
 @login_required(login_url='login')
 def deleteurl(request):
-    if request.method == "DELETE":
-        short = request.DELETE
+    if request.method == "POST":
+        short = request.POST['Delete']
         check = shorturl.objects.filter(short_query=short)
         check.delete()
-        return redirect(dashboard)
+        return redirect('dashboard')
     
     else:
-        return redirect(dashboard)
+        return redirect('dashboard')
